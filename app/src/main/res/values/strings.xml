@@ -1,0 +1,15 @@
+<!-- strings.xml -->
+<resources>
+    <string name="app_name">RestApiCalling</string>
+    <string name="load_products">Load Products</string>
+    <string name="add_product">Add New Product</string>
+    <string name="product_name">Product Name</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="category">Category</string>
+    <string name="manufacturing_date">Manufacturing Date</string>
+    <string name="sku">SKU</string>
+    <string name="save_product">Save Product</string>
+    <string name="cancel">Cancel</string>
+</resources>
