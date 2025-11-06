@@ -4,60 +4,109 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@color/white">
 
-        <TextView
-            android:id="@+id/textProductName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product Name"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textProductDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            android:textSize="14sp" />
-
+        <!-- Header Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textProductPrice"
+                android:id="@+id/textProductName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="Product Name"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="$0.00"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="16sp"
+                android:textColor="@color/green_500"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/textProductDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="@color/gray_600"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- Details Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/textProductCategory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Category"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textProductQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Qty: 0" />
+                android:text="0 in stock"
+                android:textColor="@color/green_500"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textProductCategory"
+        <!-- Footer Row -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category"
-            android:textSize="12sp"
-            android:textStyle="italic" />
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/textManufacturingDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date"
+                android:textColor="@color/gray_500"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textProductSku"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SKU"
+                android:textColor="@color/gray_500"
+                android:textSize="10sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -1,59 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
     android:padding="16dp">
 
+    <!-- Header Section -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:background="@color/purple_500"
+        android:padding="24dp"
+        android:layout_margin="-16dp"
+        android:paddingBottom="32dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Product API Demo"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="32dp" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/textStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Click below to load products"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:layout_marginBottom="24dp"
-            android:padding="8dp" />
+            android:text="Product Manager"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:gravity="center" />
 
-        <Button
-            android:id="@+id/btnRetry"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load Products" />
+            android:text="Manage your product inventory"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
 
     </LinearLayout>
 
-    <!-- Floating Action Button for adding products -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
+    <!-- Stats Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-24dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@color/white">
+
+            <!-- Status Text -->
+            <TextView
+                android:id="@+id/textStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ready to manage products"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <!-- Product Count -->
+            <TextView
+                android:id="@+id/textProductCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Products: 0"
+                android:textColor="@color/gray_500"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp" />
+
+            <!-- Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:progressTint="@color/purple_500" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnLoadProducts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="🔄 Load Products"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/purple_500"
+            android:textAllCaps="false"
+            style="@style/Widget.Material3.Button" />
+
+        <Button
+            android:id="@+id/btnAddProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="➕ Add Product"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/teal_200"
+            android:textAllCaps="false"
+            style="@style/Widget.Material3.Button" />
+
+    </LinearLayout>
+
+    <!-- Clear All Button -->
+    <Button
+        android:id="@+id/btnClearAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
-        app:tint="@android:color/white"
-        app:backgroundTint="@color/colorPrimary" />
+        android:layout_gravity="center"
+        android:text="🗑️ Clear All"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/red_500"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        style="@style/Widget.Material3.Button"
+        android:layout_marginBottom="16dp" />
 
-</RelativeLayout>
+    <!-- Products Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📦 Products"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Products List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="64dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📦"
+            android:textSize="48sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No products found"
+            android:textColor="@color/gray_600"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add your first product to get started"
+            android:textColor="@color/gray_500"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

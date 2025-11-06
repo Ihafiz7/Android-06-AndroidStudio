@@ -15,19 +15,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-    private List<Product> productList = new ArrayList<>();
-    private OnItemClickListener listener;
+
+    private List<Product> products = new ArrayList<>();
+    private OnItemClickListener itemClickListener;
+    private OnItemLongClickListener itemLongClickListener;
 
     public interface OnItemClickListener {
         void onItemClick(Product product);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
+    public interface OnItemLongClickListener {
+        void onItemLongClick(Product product);
     }
 
-    public void setProductList(List<Product> products) {
-        this.productList = products;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.itemClickListener = listener;
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener listener) {
+        this.itemLongClickListener = listener;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
         notifyDataSetChanged();
     }
 
@@ -41,24 +51,32 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = productList.get(position);
+        Product product = products.get(position);
         holder.bind(product);
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(product);
+            if (itemClickListener != null) {
+                itemClickListener.onItemClick(product);
             }
+        });
+
+        holder.itemView.setOnLongClickListener(v -> {
+            if (itemLongClickListener != null) {
+                itemLongClickListener.onItemLongClick(product);
+                return true;
+            }
+            return false;
         });
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return products.size();
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
         private TextView textProductName, textProductDescription, textProductPrice,
-                textProductQuantity, textProductCategory;
+                textProductQuantity, textProductCategory, textManufacturingDate, textProductSku;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,15 +85,31 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             textProductPrice = itemView.findViewById(R.id.textProductPrice);
             textProductQuantity = itemView.findViewById(R.id.textProductQuantity);
             textProductCategory = itemView.findViewById(R.id.textProductCategory);
+            textManufacturingDate = itemView.findViewById(R.id.textManufacturingDate);
+            textProductSku = itemView.findViewById(R.id.textProductSku);
         }
 
-        @SuppressLint("DefaultLocale")
         public void bind(Product product) {
             textProductName.setText(product.getName());
             textProductDescription.setText(product.getDescription());
             textProductPrice.setText(String.format("$%.2f", product.getPrice()));
-            textProductQuantity.setText(String.format("Qty: %d", product.getQuantity()));
+
+            // Set quantity with stock status
+            String quantityText = product.getQuantity() > 0 ?
+                    product.getQuantity() + " in stock" : "Out of stock";
+            textProductQuantity.setText(quantityText);
+            textProductQuantity.setTextColor(itemView.getContext().getResources().getColor(
+                    product.getQuantity() > 0 ? R.color.green_500 : R.color.red_500));
+
             textProductCategory.setText(product.getCategory());
+
+            if (product.getManufacturingDate() != null) {
+                textManufacturingDate.setText(product.getManufacturingDate());
+            }
+
+            if (product.getSku() != null) {
+                textProductSku.setText(product.getSku());
+            }
         }
     }
 }

@@ -1,8 +1,48 @@
-<!-- strings.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">RestApiCalling</string>
+    <!-- App Name -->
+    <string name="app_name">Product Manager</string>
+
+    <!-- Main Activity -->
+    <string name="product_manager">Product Manager</string>
+    <string name="manage_inventory">Manage your product inventory</string>
+    <string name="ready_to_manage">Ready to manage products</string>
+    <string name="total_products">Total Products: %d</string>
+    <string name="loading_products">Loading products...</string>
+    <string name="processing">Processing...</string>
+    <string name="products">Products</string>
+    <string name="no_products_found">No products found</string>
+    <string name="add_first_product">Add your first product to get started</string>
+
+    <!-- Buttons -->
     <string name="load_products">Load Products</string>
-    <string name="add_product">Add New Product</string>
+    <string name="add_product">Add Product</string>
+    <string name="clear_all">Clear All</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="ok">OK</string>
+    <string name="edit">Edit</string>
+    <string name="update">Update</string>
+
+    <!-- Dialog Titles -->
+    <string name="add_new_product">Add New Product</string>
+    <string name="product_details">Product Details</string>
+    <string name="delete_product">Delete Product</string>
+    <string name="clear_all_products">Clear All Products</string>
+    <string name="quick_actions">Quick Actions</string>
+
+    <!-- Messages -->
+    <string name="delete_confirmation">Are you sure you want to delete \"%s\"?</string>
+    <string name="clear_all_confirmation">Are you sure you want to delete all products? This action cannot be undone.</string>
+    <string name="creating_product">Creating product...</string>
+    <string name="deleting_product">Deleting product...</string>
+    <string name="product_created">Product created: %s</string>
+    <string name="product_deleted">Product deleted successfully</string>
+    <string name="error_occurred">Error: %s</string>
+    <string name="invalid_number_format">Error: Invalid number format</string>
+
+    <!-- Form Labels -->
     <string name="product_name">Product Name</string>
     <string name="description">Description</string>
     <string name="price">Price</string>
@@ -10,6 +50,33 @@
     <string name="category">Category</string>
     <string name="manufacturing_date">Manufacturing Date</string>
     <string name="sku">SKU</string>
-    <string name="save_product">Save Product</string>
-    <string name="cancel">Cancel</string>
+
+    <!-- Form Hints -->
+    <string name="hint_product_name">Enter product name</string>
+    <string name="hint_description">Enter description</string>
+    <string name="hint_price">Enter price</string>
+    <string name="hint_quantity">Enter quantity</string>
+    <string name="hint_category">Enter category</string>
+    <string name="hint_manufacturing_date">YYYY-MM-DD</string>
+    <string name="hint_sku">Enter SKU (Optional)</string>
+
+    <!-- Validation Errors -->
+    <string name="error_required">%s is required</string>
+    <string name="error_invalid_price">Invalid price format</string>
+    <string name="error_invalid_quantity">Invalid quantity format</string>
+
+    <!-- Product Details -->
+    <string name="label_id">ID</string>
+    <string name="label_name">Name</string>
+    <string name="label_description">Description</string>
+    <string name="label_price">Price</string>
+    <string name="label_quantity">Quantity</string>
+    <string name="label_category">Category</string>
+    <string name="label_manufacturing_date">Manufacturing Date</string>
+    <string name="label_sku">SKU</string>
+    <string name="not_available">N/A</string>
+
+    <!-- Stock Status -->
+    <string name="in_stock">%d in stock</string>
+    <string name="out_of_stock">Out of stock</string>
 </resources>
